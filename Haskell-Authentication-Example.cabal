@@ -13,22 +13,25 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
-library
-  hs-source-dirs:      src
-  exposed-modules:     Lib
-  build-depends:       base >= 4.7 && < 5
-                     , aeson
-                     , servant-server
-                     , wai
-                     , warp
-  default-language:    Haskell2010
+-- library
+--   hs-source-dirs:      src
+--   exposed-modules:     Lib
+--   build-depends:       base >= 4.7 && < 5
+--                      , aeson
+--                      , servant-server
+--                      , wai
+--                      , warp
+--   default-language:    Haskell2010
 
 executable Haskell-Authentication-Example-exe
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , Haskell-Authentication-Example
+                     , servant-server
+                     , wai
+                     , warp
+                     , aeson
   default-language:    Haskell2010
 
 test-suite Haskell-Authentication-Example-test
@@ -36,7 +39,6 @@ test-suite Haskell-Authentication-Example-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
-                     , Haskell-Authentication-Example
                      , hspec
                      , hspec-wai
                      , hspec-wai-json
